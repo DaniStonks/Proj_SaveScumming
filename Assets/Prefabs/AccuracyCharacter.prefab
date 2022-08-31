@@ -2972,7 +2972,7 @@ GameObject:
   - component: {fileID: 7506553106460212749}
   - component: {fileID: 7596991044185639591}
   m_Layer: 0
-  m_Name: PlayerCharacters
+  m_Name: AccuracyCharacter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
