@@ -106,7 +106,7 @@ AnimatorStateMachine:
   m_EntryPosition: {x: 210, y: -80, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: -2523360938175053577}
+  m_DefaultState: {fileID: -4963830843564992076}
 --- !u!1102 &-4963830843564992076
 AnimatorState:
   serializedVersion: 6
@@ -266,7 +266,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: RifleIdel
+  m_Name: RifleIdle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
