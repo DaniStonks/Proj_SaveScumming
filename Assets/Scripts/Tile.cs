@@ -6,8 +6,10 @@ public class Tile : MonoBehaviour
 {
     private List<GameObject> borders = new List<GameObject>();
     [SerializeField] private Material selectedColors;
+    [SerializeField] private Material hoverColors;
     [SerializeField] private Material idleColors;
     private bool isSelected = false;
+    private bool isHovered = false;
 
     // Start is called before the first frame update
     void Start()
@@ -31,15 +33,42 @@ public class Tile : MonoBehaviour
         }
         else
         {
-            foreach (GameObject b in borders)
+            if (isHovered)
             {
-                b.GetComponent<MeshRenderer>().material = idleColors;
+                foreach (GameObject b in borders)
+                {
+                    b.GetComponent<MeshRenderer>().material = hoverColors;
+                }
+            }
+            else
+            {
+                {
+                    foreach (GameObject b in borders)
+                    {
+                        b.GetComponent<MeshRenderer>().material = idleColors;
+                    }
+                }
             }
         }
     }
 
-    public void isTileSelected(bool selected)
+    public void setTileSelected(bool selected)
     {
         isSelected = selected;
+    }
+
+    public void setTileHovered(bool hovered)
+    {
+        isHovered = hovered;
+    }
+
+    public bool isTileSelected()
+    {
+        return isSelected;
+    }
+
+    public bool isTileHovered()
+    {
+        return isHovered;
     }
 }

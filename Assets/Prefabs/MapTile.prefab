@@ -107,9 +107,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5482311430810270900}
   - component: {fileID: 7954855285002160782}
+  - component: {fileID: 363767569663246865}
   m_Layer: 0
   m_Name: MapTile
-  m_TagString: Untagged
+  m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -144,7 +145,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedColors: {fileID: 2100000, guid: eadae4b471689c445ac29698b48bb2c9, type: 2}
+  hoverColors: {fileID: 2100000, guid: 00c3a1644d1e96240988d16268ca7904, type: 2}
   idleColors: {fileID: 2100000, guid: fa1856dd20bcf7f49b1e2098f58e420b, type: 2}
+--- !u!65 &363767569663246865
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2593602355039910149}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 0.8, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5616145103826009472
 GameObject:
   m_ObjectHideFlags: 0
