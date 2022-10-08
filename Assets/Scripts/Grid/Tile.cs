@@ -8,8 +8,10 @@ public class Tile : MonoBehaviour
     [SerializeField] private Material selectedColors;
     [SerializeField] private Material hoverColors;
     [SerializeField] private Material idleColors;
-    private bool isSelected = false;
-    private bool isHovered = false;
+    private bool isSelected { get; set; }
+
+    //ver no que da fazer desta maneira
+    [SerializeField] private GameObject tileContent;
 
     // Start is called before the first frame update
     void Start()
@@ -24,51 +26,58 @@ public class Tile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isSelected)
+
+    }
+
+    void OnMouseOver()
+    {
+        if (!isSelected)
         {
+            foreach (GameObject b in borders)
+            {
+                b.GetComponent<MeshRenderer>().material = hoverColors;
+            }
+        }
+    }
+
+    void OnMouseExit()
+    {
+        if (!isSelected)
+        {
+            foreach (GameObject b in borders)
+            {
+                b.GetComponent<MeshRenderer>().material = idleColors;
+            }
+        }
+    }
+
+    public void e()
+    {
+        foreach (GameObject b in borders)
+        {
+            b.GetComponent<MeshRenderer>().material = selectedColors;
+        }
+    }
+
+    void OnMouseUpAsButton()
+    {
+        if (tileContent != null && tileContent.tag.Equals("PlayerChar"))
+        {
+            isSelected = true;
+            print("F");
             foreach (GameObject b in borders)
             {
                 b.GetComponent<MeshRenderer>().material = selectedColors;
             }
-        }
-        else
-        {
-            if (isHovered)
+            // TODO - Mostrar UI
+            Collider[] hit = Physics.OverlapSphere(gameObject.transform.position, 5f * tileContent.GetComponent<PlayerCharacter>().amountTileMoves);
+            foreach (Collider enemy in hit)
             {
-                foreach (GameObject b in borders)
+                if (enemy.tag.Equals("Tile"))
                 {
-                    b.GetComponent<MeshRenderer>().material = hoverColors;
-                }
-            }
-            else
-            {
-                {
-                    foreach (GameObject b in borders)
-                    {
-                        b.GetComponent<MeshRenderer>().material = idleColors;
-                    }
+                    enemy.GetComponent<Tile>().e();
                 }
             }
         }
-    }
-
-    public void setTileSelected(bool selected)
-    {
-        isSelected = selected;
-    }
-
-    public void setTileHovered(bool hovered)
-    {
-        isHovered = hovered;
-    }
-
-    public bool isTileSelected()
-    {
-        return isSelected;
-    }
-
-    public bool isTileHovered()
-    {
-        return isHovered;
     }
 }
