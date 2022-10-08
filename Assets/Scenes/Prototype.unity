@@ -542,7 +542,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7510498664603082009, guid: 1293012774cf1d5459a34d510bba03ff, type: 3}
   m_PrefabInstance: {fileID: 969927337}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1807744771
+--- !u!114 &1807744774
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -551,7 +551,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1807744770}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c4086957918d04458e20284e75ff372, type: 3}
+  m_Script: {fileID: 11500000, guid: c6fbfc22c3b8a2d4684051403da5b375, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &2676583601783992265
@@ -645,6 +645,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7195804346362151168, guid: 20713d565f7b5a142b84cf0081ac736d, type: 3}
+      propertyPath: tileContent
+      value: 
+      objectReference: {fileID: 1807744770}
     - target: {fileID: 7313164803914850682, guid: 20713d565f7b5a142b84cf0081ac736d, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
