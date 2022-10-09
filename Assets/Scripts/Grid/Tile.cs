@@ -9,6 +9,7 @@ public class Tile : MonoBehaviour
     [SerializeField] private Material hoverColors;
     [SerializeField] private Material idleColors;
     private bool isSelected { get; set; }
+    private bool isHovered { get; set; }
 
     //ver no que da fazer desta maneira
     [SerializeField] private GameObject tileContent;
@@ -31,6 +32,7 @@ public class Tile : MonoBehaviour
 
     void OnMouseOver()
     {
+        isHovered = true;
         if (!isSelected)
         {
             foreach (GameObject b in borders)
@@ -39,6 +41,35 @@ public class Tile : MonoBehaviour
             }
         }
     }
+
+    /*
+    if (isSelected)
+        {
+            foreach (GameObject b in borders)
+            {
+                b.GetComponent<MeshRenderer>().material = selectedColors;
+            }
+        }
+        else
+        {
+            if (isHovered)
+            {
+                foreach (GameObject b in borders)
+                {
+                    b.GetComponent<MeshRenderer>().material = hoverColors;
+                }
+            }
+            else
+            {
+                {
+                    foreach (GameObject b in borders)
+                    {
+                        b.GetComponent<MeshRenderer>().material = idleColors;
+                    }
+                }
+            }
+        }
+        */
 
     void OnMouseExit()
     {
@@ -64,20 +95,21 @@ public class Tile : MonoBehaviour
         if (tileContent != null && tileContent.tag.Equals("PlayerChar"))
         {
             isSelected = true;
-            print("F");
             foreach (GameObject b in borders)
             {
                 b.GetComponent<MeshRenderer>().material = selectedColors;
             }
+
             // TODO - Mostrar UI
-            Collider[] hit = Physics.OverlapSphere(gameObject.transform.position, 5f * tileContent.GetComponent<PlayerCharacter>().amountTileMoves);
-            foreach (Collider enemy in hit)
-            {
-                if (enemy.tag.Equals("Tile"))
-                {
-                    enemy.GetComponent<Tile>().e();
-                }
+
+            /* Coisas teste
+            Coordenates t = Grid.indexOf(this);
+            Tile te = Grid.GameGrid[t.X, t.Y];
+            List<Tile> tiless = Grid.adjacentTilesWithinDistance(this, 4);
+            foreach(Tile ti in tiless){
+                ti.e();
             }
+            */
         }
     }
 }
