@@ -10,11 +10,8 @@ public class Tile : MonoBehaviour
     [SerializeField] private Material idleColors;
     private bool isSelected { get; set; }
     private bool isHovered { get; set; }
+    [SerializeField] private GameObject tileContent; //conteudo da tile, quer seja personagens ou obstaculos
 
-    //ver no que da fazer desta maneira
-    [SerializeField] private GameObject tileContent;
-
-    // Start is called before the first frame update
     void Start()
     {
         Transform border = this.gameObject.transform.GetChild(1);
@@ -24,70 +21,19 @@ public class Tile : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
-
+        updateTileColor();
     }
 
     void OnMouseOver()
     {
         isHovered = true;
-        if (!isSelected)
-        {
-            foreach (GameObject b in borders)
-            {
-                b.GetComponent<MeshRenderer>().material = hoverColors;
-            }
-        }
     }
-
-    /*
-    if (isSelected)
-        {
-            foreach (GameObject b in borders)
-            {
-                b.GetComponent<MeshRenderer>().material = selectedColors;
-            }
-        }
-        else
-        {
-            if (isHovered)
-            {
-                foreach (GameObject b in borders)
-                {
-                    b.GetComponent<MeshRenderer>().material = hoverColors;
-                }
-            }
-            else
-            {
-                {
-                    foreach (GameObject b in borders)
-                    {
-                        b.GetComponent<MeshRenderer>().material = idleColors;
-                    }
-                }
-            }
-        }
-        */
 
     void OnMouseExit()
     {
-        if (!isSelected)
-        {
-            foreach (GameObject b in borders)
-            {
-                b.GetComponent<MeshRenderer>().material = idleColors;
-            }
-        }
-    }
-
-    public void e()
-    {
-        foreach (GameObject b in borders)
-        {
-            b.GetComponent<MeshRenderer>().material = selectedColors;
-        }
+        isHovered = false;
     }
 
     void OnMouseUpAsButton()
@@ -95,21 +41,47 @@ public class Tile : MonoBehaviour
         if (tileContent != null && tileContent.tag.Equals("PlayerChar"))
         {
             isSelected = true;
-            foreach (GameObject b in borders)
-            {
-                b.GetComponent<MeshRenderer>().material = selectedColors;
-            }
 
             // TODO - Mostrar UI
+        }
+    }
 
-            /* Coisas teste
+    /* Coisas teste para mostrar tiles em certa distancia
             Coordenates t = Grid.indexOf(this);
             Tile te = Grid.GameGrid[t.X, t.Y];
             List<Tile> tiless = Grid.adjacentTilesWithinDistance(this, 4);
-            foreach(Tile ti in tiless){
+            foreach (Tile ti in tiless)
+            {
+                ti.isSelected = true;
                 ti.e();
             }
             */
+
+    private void updateTileColor()
+    {
+        if (isHovered)
+        {
+            foreach (GameObject b in borders)
+            {
+                b.GetComponent<MeshRenderer>().material = hoverColors;
+            }
+        }
+        else
+        {
+            if (isSelected)
+            {
+                foreach (GameObject b in borders)
+                {
+                    b.GetComponent<MeshRenderer>().material = selectedColors;
+                }
+            }
+            else
+            {
+                foreach (GameObject b in borders)
+                {
+                    b.GetComponent<MeshRenderer>().material = idleColors;
+                }
+            }
         }
     }
 }

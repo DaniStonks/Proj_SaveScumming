@@ -53,9 +53,9 @@ public class Grid : MonoBehaviour
     {
         int[] dRow = { -1, 0, 1, 0 };
         int[] dCol = { 0, 1, 0, -1 };
+        List<Tile> adjacentTiles = new List<Tile>();
         bool[,] visited = new bool[GameGrid.GetLength(0), GameGrid.GetLength(1)];
         int currentDistance = 0;
-        List<Tile> adjacentTiles = new List<Tile>();
 
         // Stores indices of the matrix cells
         Queue q = new Queue();
