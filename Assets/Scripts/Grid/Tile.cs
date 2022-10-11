@@ -46,6 +46,8 @@ public class Tile : MonoBehaviour
         }
     }
 
+    //private void 
+
     /* Coisas teste para mostrar tiles em certa distancia
             Coordenates t = Grid.indexOf(this);
             Tile te = Grid.GameGrid[t.X, t.Y];
