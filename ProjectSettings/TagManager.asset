@@ -8,6 +8,7 @@ TagManager:
   - PlayerChar
   - EnemyChar
   - Grid
+  - TurnPanel
   layers:
   - Default
   - TransparentFX

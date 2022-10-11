@@ -42,7 +42,7 @@ public class Tile : MonoBehaviour
         {
             isSelected = true;
 
-            // TODO - Mostrar UI
+            GameObject.Find("Canvas").transform.Find("UIPanel").gameObject.SetActive(true);
         }
     }
 

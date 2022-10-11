@@ -764,7 +764,7 @@ PrefabInstance:
     - target: {fileID: 5422457263202174187, guid: 20713d565f7b5a142b84cf0081ac736d, type: 3}
       propertyPath: tileContent
       value: 
-      objectReference: {fileID: 7510996442409392382}
+      objectReference: {fileID: 0}
     - target: {fileID: 7195804346362151168, guid: 20713d565f7b5a142b84cf0081ac736d, type: 3}
       propertyPath: tileContent
       value: 
@@ -786,6 +786,14 @@ PrefabInstance:
     - target: {fileID: 6131524994363239454, guid: 65b262883e2b4594084007b2cede893f, type: 3}
       propertyPath: m_Name
       value: UIPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 6131524994363239454, guid: 65b262883e2b4594084007b2cede893f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6131524994363239454, guid: 65b262883e2b4594084007b2cede893f, type: 3}
+      propertyPath: m_TagString
+      value: TurnPanel
       objectReference: {fileID: 0}
     - target: {fileID: 6131524994363239455, guid: 65b262883e2b4594084007b2cede893f, type: 3}
       propertyPath: m_Pivot.x
