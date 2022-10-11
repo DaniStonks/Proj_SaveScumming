@@ -53,7 +53,6 @@ public class Tile : MonoBehaviour
             foreach (Tile ti in tiless)
             {
                 ti.isSelected = true;
-                ti.e();
             }
             */
 
