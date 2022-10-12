@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerUIController : MonoBehaviour
 {
+    public bool IsAttacking{ get; set; }
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +21,7 @@ public class PlayerUIController : MonoBehaviour
 
     }
 
-    public void ConfirmAttack(){
+    public void ConfirmAttack(Character attacker, StandardEnemy enemy){
         
     }
 }

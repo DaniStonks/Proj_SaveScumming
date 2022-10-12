@@ -1,10 +1,9 @@
 using System.Collections;
 using UnityEngine;
 
-public class CharacterController : MonoBehaviour, IDamageable
+public class CharacterController : MonoBehaviour
 {
-    private int amountTileMoves = 3;
-    public int AmountTileMoves{get;}
+    private Character character;
     private bool isMoving;
     private float tileMoveTime = 0.2f;
 
@@ -15,11 +14,6 @@ public class CharacterController : MonoBehaviour, IDamageable
         {
             StartCoroutine(Move(Vector3.forward*10));
         }
-    }
-
-    public void Damage()
-    {
-        throw new System.NotImplementedException();
     }
 
     private IEnumerator Move(Vector3 direction)
@@ -40,10 +34,5 @@ public class CharacterController : MonoBehaviour, IDamageable
 
         transform.position = targPos;
         isMoving = false;
-    }
-
-    public void resetMoves()
-    {
-        amountTileMoves = 3;
     }
 }
