@@ -6,7 +6,8 @@ public class DamageCharacter : Character
 {
     private int damageBonus = 1;
 
-    public DamageCharacter(){
+    public DamageCharacter() : base(3,3,1)
+    {
         
     }
 }

@@ -6,7 +6,8 @@ public class AccuracyCharacter : Character
 {
     private float accuracyBonus = 10f;
 
-    public AccuracyCharacter(){
+    public AccuracyCharacter() : base(3,3,1)
+    {
         
     }
 }

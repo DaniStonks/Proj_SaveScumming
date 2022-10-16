@@ -3,16 +3,28 @@ using UnityEngine;
 
 public class CharacterController : MonoBehaviour
 {
-    private Character character;
+    public Character character;
+    private Animator a;
     private bool isMoving;
     private float tileMoveTime = 0.2f;
+    public bool isSelected;
+
+    void Start(){
+        a = gameObject.GetComponent<Animator>();
+
+        //Meter atributo string de arma talvez para mudar isto tudo simplesmente para a.setTrigger("Start" + character.weapon) para ser
+        //mais reutilizavel, senao caso sejam adicionadas mais personagens apenas são metidos mais if's
+        if(character is AccuracyCharacter) a.SetTrigger("StartPistol");
+        else a.SetTrigger("StartRifle"); 
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.W) && !isMoving)
+        if(Input.GetKey(KeyCode.W))
         {
-            StartCoroutine(Move(Vector3.forward*10));
+            isSelected = true;
+            //StartCoroutine(Move(Vector3.forward*10)); mover personagem(para o futuro)
         }
     }
 
@@ -34,5 +46,11 @@ public class CharacterController : MonoBehaviour
 
         transform.position = targPos;
         isMoving = false;
+    }
+
+    public void Attack(Enemy enemy)
+    {
+        a.SetTrigger("Aim");
+        enemy.TakeDamage(character.Damage);
     }
 }
