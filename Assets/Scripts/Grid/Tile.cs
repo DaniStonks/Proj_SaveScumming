@@ -14,6 +14,7 @@ public class Tile : MonoBehaviour
 
     void Start()
     {
+        //Find do painel aqui
         Transform border = this.gameObject.transform.GetChild(1);
         foreach (Transform b in border)
         {
@@ -46,17 +47,14 @@ public class Tile : MonoBehaviour
         }
     }
 
-    //private void 
-
-    /* Coisas teste para mostrar tiles em certa distancia
-            Coordenates t = Grid.indexOf(this);
-            Tile te = Grid.GameGrid[t.X, t.Y];
-            List<Tile> tiless = Grid.adjacentTilesWithinDistance(this, 4);
-            foreach (Tile ti in tiless)
-            {
-                ti.isSelected = true;
-            }
-            */
+    public void TilesToMove()
+    {
+        List<Tile> adjacentTiles = Grid.adjacentTilesWithinDistance(this, tileContent.GetComponent<CharacterController>().AmountTileMoves);
+        foreach (Tile tile in adjacentTiles)
+        {
+            tile.isSelected = true;
+        }
+    }
 
     private void updateTileColor()
     {
