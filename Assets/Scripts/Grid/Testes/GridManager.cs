@@ -5,12 +5,14 @@ using UnityEngine;
 
 public class GridManager : MonoBehaviour
 {
-    private int rows = 10, cols = 10;
-    private float tileSize = 10;
+    [SerializeField] public int rows = 10, cols = 10;
+    [SerializeField] public float tileSize = 10;
+    [SerializeField] private GameObject[,] mapGrid;
 
     // Start is called before the first frame update
     void Start()
     {
+        mapGrid = new GameObject[rows,cols]; 
         GenerateGrid();
     }
 
@@ -27,6 +29,7 @@ public class GridManager : MonoBehaviour
                 float posY = row * -tileSize;
 
                 tile.transform.position = new Vector3(posX, 0, posY);
+                mapGrid[row, col] = tile;
             }
         }
 

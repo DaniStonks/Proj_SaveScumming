@@ -246,6 +246,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bed6e0b10981a24d871b03e43513ae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rows: 10
+  cols: 10
+  tileSize: 10
 --- !u!4 &1386751954
 Transform:
   m_ObjectHideFlags: 0
