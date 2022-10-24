@@ -32,10 +32,4 @@ public class GridManager : MonoBehaviour
 
         Destroy(refTile);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
