@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MoveController : MonoBehaviour
 {
+    public static Tile selectedTile;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +15,17 @@ public class MoveController : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void MoveButtonPress() 
+    {
+        if (selectedTile != null) 
+        {
+            List<Tile> adjTiles = Grid.adjacentTilesWithinDistance(selectedTile, 1);
+            foreach (Tile tiles in adjTiles)
+            {
+                tiles.Selected = true;
+            }
+        }
     }
 }

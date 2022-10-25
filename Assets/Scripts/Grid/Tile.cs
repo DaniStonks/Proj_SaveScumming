@@ -36,6 +36,7 @@ public class Tile : MonoBehaviour
     {
         if (content != null && content.tag.Equals("PlayerChar"))
         {
+            MoveController.selectedTile = this;
             Selected = true;
             Grid.selectedCharacter = content.GetComponent<CharacterController>();
             GameObject.Find("Canvas").transform.Find("UIPanel").gameObject.SetActive(true);
