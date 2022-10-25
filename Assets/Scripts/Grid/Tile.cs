@@ -5,6 +5,7 @@ using UnityEngine;
 public class Tile : MonoBehaviour
 {
     private List<GameObject> borders = new List<GameObject>();
+    private GameObject turnPanel;
     [SerializeField] private Material selectedColors;
     [SerializeField] private Material hoverColors;
     [SerializeField] private Material idleColors;
@@ -14,6 +15,7 @@ public class Tile : MonoBehaviour
 
     void Start()
     {
+        turnPanel = GameObject.FindGameObjectWithTag("TurnPanel");
         //Find do painel aqui
         Transform border = this.gameObject.transform.GetChild(1);
         foreach (Transform b in border)
@@ -43,7 +45,7 @@ public class Tile : MonoBehaviour
         {
             isSelected = true;
 
-            GameObject.Find("Canvas").transform.Find("UIPanel").gameObject.SetActive(true);
+            turnPanel.SetActive(true);
         }
     }
 
