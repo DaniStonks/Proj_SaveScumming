@@ -1,27 +1,20 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    private List<GameObject> borders = new List<GameObject>();
-    private GameObject turnPanel;
-    [SerializeField] private Material selectedColors;
-    [SerializeField] private Material hoverColors;
-    [SerializeField] private Material idleColors;
-    private bool isSelected { get; set; }
-    private bool isHovered { get; set; }
-    [SerializeField] private GameObject tileContent; //conteudo da tile, quer seja personagens ou obstaculos
+    private List<Material> borderMaterials = new List<Material>();
+    private Material tileMaterial;
+    public bool Selected { get; set; }
+    public bool Hovered { get; set; }
+    [SerializeField] private GameObject content; //conteudo da tile, quer seja personagens ou obstaculos
 
     void Start()
     {
-        turnPanel = GameObject.FindGameObjectWithTag("TurnPanel");
-        //Find do painel aqui
+        Hovered = false;
+        Selected = false;
         Transform border = this.gameObject.transform.GetChild(1);
-        foreach (Transform b in border)
-        {
-            borders.Add(b.gameObject);
-        }
+        foreach (Transform b in border) borderMaterials.Add(b.GetComponent<MeshRenderer>().material);
     }
 
     void Update()
@@ -31,58 +24,54 @@ public class Tile : MonoBehaviour
 
     void OnMouseOver()
     {
-        isHovered = true;
+        Hovered = true;
     }
 
     void OnMouseExit()
     {
-        isHovered = false;
+        Hovered = false;
     }
 
     void OnMouseUpAsButton()
     {
-        if (tileContent != null && tileContent.tag.Equals("PlayerChar"))
+        if (content != null && content.tag.Equals("PlayerChar"))
         {
-            isSelected = true;
-
-            turnPanel.SetActive(true);
+            Selected = true;
+            Grid.selectedCharacter = content.GetComponent<CharacterController>();
+            GameObject.Find("Canvas").transform.Find("UIPanel").gameObject.SetActive(true);
         }
-    }
-
-    public void TilesToMove()
-    {
-        List<Tile> adjacentTiles = Grid.adjacentTilesWithinDistance(this, tileContent.GetComponent<CharacterController>().AmountTileMoves);
-        foreach (Tile tile in adjacentTiles)
+        if (PlayerUIController.IsAttacking)
         {
-            tile.isSelected = true;
+            print(content.GetComponent<EnemyController>().enemy.Health);
+            PlayerUIController.ConfirmAttack(Grid.selectedCharacter,content.GetComponent<EnemyController>());
+            print("Apos fight" + content.GetComponent<EnemyController>().enemy.Health);
         }
     }
 
     private void updateTileColor()
     {
-        if (isHovered)
+        if (Hovered)
         {
-            foreach (GameObject b in borders)
-            {
-                b.GetComponent<MeshRenderer>().material = hoverColors;
-            }
+            foreach (Material m in borderMaterials) m.color = new Color(1, 0.78f, 0); //cor amarela
         }
         else
         {
-            if (isSelected)
+            if (Selected)
             {
-                foreach (GameObject b in borders)
-                {
-                    b.GetComponent<MeshRenderer>().material = selectedColors;
-                }
+                foreach (Material m in borderMaterials) m.color = new Color(1, 0.34f, 0); //cor laranja
             }
             else
             {
-                foreach (GameObject b in borders)
-                {
-                    b.GetComponent<MeshRenderer>().material = idleColors;
-                }
+                foreach (Material m in borderMaterials) m.color = new Color(1,1,1); //cor branca
             }
         }
+    }
+
+    public GameObject getContent(){
+        return content;
+    }
+
+    public void setContent(GameObject content){
+        this.content = content;
     }
 }
