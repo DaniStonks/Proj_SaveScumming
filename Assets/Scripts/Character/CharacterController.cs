@@ -43,6 +43,7 @@ public class CharacterController : MonoBehaviour, IDamageable
         isMoving = false;
     }
 
+
     public void resetMoves()
     {
         amountTileMoves = 3;
