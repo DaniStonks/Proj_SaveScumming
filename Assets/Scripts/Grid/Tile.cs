@@ -37,15 +37,19 @@ public class Tile : MonoBehaviour
         if (content != null && content.tag.Equals("PlayerChar"))
         {
             Selected = true;
-            Grid.selectedCharacter = content.GetComponent<CharacterController>();
-            GameObject.Find("Canvas").transform.Find("UIPanel").gameObject.SetActive(true);
+            GameObject uiPanel = GameObject.Find("Canvas").transform.Find("UIPanel").gameObject;
+            CharacterController character = content.GetComponent<CharacterController>();
+            uiPanel.SetActive(true);
+            uiPanel.GetComponent<PlayerUIController>().selectedCharacter = character;
         }
+        /*
         if (PlayerUIController.IsAttacking)
         {
             print(content.GetComponent<EnemyController>().enemy.Health);
             PlayerUIController.ConfirmAttack(Grid.selectedCharacter,content.GetComponent<EnemyController>());
             print("Apos fight" + content.GetComponent<EnemyController>().enemy.Health);
         }
+        */
     }
 
     private void updateTileColor()

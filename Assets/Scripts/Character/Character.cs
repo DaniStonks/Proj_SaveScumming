@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Character : MonoBehaviour, IDamageable
@@ -20,6 +21,6 @@ public class Character : MonoBehaviour, IDamageable
     }
 
     public void Die(){
-        throw new System.NotImplementedException();
+        Destroy(this, 3f);
     }
 }

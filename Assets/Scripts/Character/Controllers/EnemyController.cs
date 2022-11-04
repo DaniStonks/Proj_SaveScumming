@@ -12,7 +12,9 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(enemy.Health == 0) Die();
+        if(enemy.Health <= 0){
+            a.SetTrigger("Die");
+        }
         if(Input.GetKey(KeyCode.W))
         {
             //isSelected = true;

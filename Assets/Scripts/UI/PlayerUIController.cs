@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PlayerUIController : MonoBehaviour
 {
-    public static bool IsAttacking{ get; set; }
+    [SerializeField] private GameObject AttackPanel;
+    public CharacterController selectedCharacter { get; set; }
+    private bool IsAttacking { get; set; }
     // Start is called before the first frame update
     void Start()
     {
@@ -15,17 +17,31 @@ public class PlayerUIController : MonoBehaviour
     void Update()
     {
         if(IsAttacking){
-            //Mostrar algo
+            SelectEnemy();
+            //Mostrar algo nos inimigos.
         }
     }
 
-    public void StartAttack(){
-        IsAttacking = true;
-        print("yep");
+    public void toggleAttack()
+    {
+        IsAttacking = IsAttacking ? false : true;
     }
 
-    public static void ConfirmAttack(CharacterController attacker, EnemyController enemy){
-        if(IsAttacking) attacker.Attack(enemy.enemy);
-        IsAttacking = false;
+    public void SelectEnemy()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out hit, 300.0f) && hit.transform.tag.Equals("Tile"))
+            {
+                Tile t = hit.transform.gameObject.GetComponent<Tile>();
+                if (t != null && t.getContent().tag.Equals("EnemyChar"))
+                {
+                    AttackPanel.SetActive(true);
+                    gameObject.SetActive(false);
+                }
+            }
+        }
     }
 }

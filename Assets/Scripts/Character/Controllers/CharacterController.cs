@@ -52,5 +52,8 @@ public class CharacterController : MonoBehaviour
     {
         a.SetTrigger("Aim");
         enemy.TakeDamage(character.Damage);
+        if(enemy.Health <= 0){
+            //enemy.
+        }
     }
 }

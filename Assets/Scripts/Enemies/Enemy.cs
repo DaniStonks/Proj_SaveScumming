@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour, IDamageable
@@ -15,5 +13,12 @@ public class Enemy : MonoBehaviour, IDamageable
     public void TakeDamage(int amount)
     {
         Health -= amount;
+
+        if(Health <= 0) Die();
+        print("yeeeeeep");
+    }
+
+    public void Die(){
+        Destroy(this.gameObject, 3.3f);
     }
 }

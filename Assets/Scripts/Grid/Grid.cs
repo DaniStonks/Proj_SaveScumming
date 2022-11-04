@@ -5,7 +5,6 @@ using UnityEngine;
 public class Grid : MonoBehaviour
 {
     public static Tile[,] GameGrid { get; set; } //[linha, coluna]
-    public static CharacterController selectedCharacter {get; set;}
 
     void Start()
     {
