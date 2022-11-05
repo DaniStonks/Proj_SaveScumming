@@ -40,6 +40,9 @@ public class PlayerUIController : MonoBehaviour
                 {
                     AttackPanel.SetActive(true);
                     gameObject.SetActive(false);
+                    AttackController attkC = AttackPanel.GetComponent<AttackController>();
+                    attkC.selectedCharacter = selectedCharacter;
+                    attkC.selectedEnemy = t.getContent().GetComponent<EnemyController>();
                 }
             }
         }

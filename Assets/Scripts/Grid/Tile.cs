@@ -42,14 +42,6 @@ public class Tile : MonoBehaviour
             uiPanel.SetActive(true);
             uiPanel.GetComponent<PlayerUIController>().selectedCharacter = character;
         }
-        /*
-        if (PlayerUIController.IsAttacking)
-        {
-            print(content.GetComponent<EnemyController>().enemy.Health);
-            PlayerUIController.ConfirmAttack(Grid.selectedCharacter,content.GetComponent<EnemyController>());
-            print("Apos fight" + content.GetComponent<EnemyController>().enemy.Health);
-        }
-        */
     }
 
     private void updateTileColor()

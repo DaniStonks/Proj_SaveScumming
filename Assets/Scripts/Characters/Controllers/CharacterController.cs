@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class CharacterController : MonoBehaviour
 {
-    public Character character;
+    [SerializeField] private Character character;
     private Animator a;
-    private bool isMoving;
     private float tileMoveTime = 0.2f;
+    private bool isMoving;
     public bool isSelected;
 
     void Start(){
@@ -14,18 +14,8 @@ public class CharacterController : MonoBehaviour
 
         //Meter atributo string de arma talvez para mudar isto tudo simplesmente para a.setTrigger("Start" + character.weapon) para ser
         //mais reutilizavel, senao caso sejam adicionadas mais personagens apenas são metidos mais if's
-        if(character is AccuracyCharacter) a.SetTrigger("StartPistol");
-        else a.SetTrigger("StartRifle"); 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if(Input.GetKey(KeyCode.W))
-        {
-            isSelected = true;
-            //StartCoroutine(Move(Vector3.forward*10)); mover personagem(para o futuro)
-        }
+        //a.SetTrigger("StartPistol");
+        a.SetTrigger("StartRifle"); 
     }
 
     private IEnumerator Move(Vector3 direction)
@@ -52,8 +42,16 @@ public class CharacterController : MonoBehaviour
     {
         a.SetTrigger("Aim");
         enemy.TakeDamage(character.Damage);
-        if(enemy.Health <= 0){
-            //enemy.
-        }
+    }
+
+    public void TakeDamage(int amount)
+    {
+        character.Health -= amount;
+
+        if(character.Health < 0) Die();
+    }
+
+    public void Die(){
+        Destroy(this, 3f);
     }
 }

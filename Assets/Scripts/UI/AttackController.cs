@@ -5,6 +5,7 @@ using UnityEngine;
 public class AttackController : MonoBehaviour
 {
     public CharacterController selectedCharacter { get; set;}
+    public EnemyController selectedEnemy { get; set;}
     // Start is called before the first frame update
     void Start()
     {
@@ -15,5 +16,14 @@ public class AttackController : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void CancelAttack(){
+
+    }
+
+    public void ConfirmAttack(){
+        selectedCharacter.Attack(selectedEnemy.enemy);
+        gameObject.SetActive(false);
     }
 }

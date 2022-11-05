@@ -1229,6 +1229,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7506553106460212749}
   - component: {fileID: 7596991044185639591}
+  - component: {fileID: 165301198271525475}
+  - component: {fileID: 4912299034388046881}
   m_Layer: 0
   m_Name: AccuracyCharacter
   m_TagString: PlayerChar
@@ -1273,6 +1275,37 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &165301198271525475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7510498664603082009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c4086957918d04458e20284e75ff372, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character: {fileID: 4912299034388046881}
+  isSelected: 0
+--- !u!114 &4912299034388046881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7510498664603082009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bd1ab910bfe4254bace4f73196f0b71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 3
+  damage: 1
+  moveRadius: 3
+  damageBonus: 0
+  accuracyBonus: 10
 --- !u!1 &7510500895092249139
 GameObject:
   m_ObjectHideFlags: 0
